@@ -1,8 +1,8 @@
 #
 # Author:: John Bellone (<jbellone@bloomberg.net>)
 # Copyright:: Copyright (C) 2014 Bloomberg Finance L.P.
+# License:: Apache 2.0
 #
-# All rights reserved - Do Not Redistribute
 # Cookbook Name:: jmeter
 # Attribute:: default
 #
