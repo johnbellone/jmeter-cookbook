@@ -13,9 +13,3 @@ suites:
   - name: default
     run_list: 
       - 'recipe[jmeter::default]'
-  - name: install_package
-    run_list: 
-      - 'recipe[jmeter::install_package]'
-  - name: install_source
-    run_list: 
-      - 'recipe[jmeter::install_source]'
