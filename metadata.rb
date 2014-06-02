@@ -6,12 +6,10 @@ description      'Installs/Configures jmeter'
 long_description 'Installs/Configures jmeter'
 version          '0.1.0'
 
-%w(centos redhat).each do |name|
-  supports name, '= 6.5'
-end
-
+supports 'centos', '~> 6.5'
+supports 'centos', '~> 5.8'
 supports 'ubuntu', '= 12.04'
+supports 'ubuntu', '= 14.04'
 
 depends 'java'
 depends 'ark'
-depends 'chruby'

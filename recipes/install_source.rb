@@ -9,6 +9,9 @@
 include_recipe 'ark::default'
 
 ark 'jmeter' do
+  has_binaries ['bin/jmeter', 'bin/jmeter-server']
   url node[:jmeter][:source_url]
   checksum node[:jmeter][:source_checksum]
+  version node[:jmeter][:version]
+  action :install
 end
