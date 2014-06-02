@@ -5,8 +5,8 @@ Configures a node for load-testing with [Apache JMeter][3].
 # Requirements
 
 ## Supported Platforms
-- RHEL (CentOS) 6.5
-- Ubuntu 12.04
+- CentOS 6.5, 5.8
+- Ubuntu 14.04, 12.04
 
 # Maintainers
 
