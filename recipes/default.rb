@@ -8,3 +8,5 @@
 #
 include_recipe 'java::default'
 include_recipe "jmeter::install_#{node[:jmeter][:install_type]}"
+
+directory node[:jmeter][:testplan_dir]

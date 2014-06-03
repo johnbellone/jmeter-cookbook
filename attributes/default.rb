@@ -7,6 +7,7 @@
 # Attribute:: default
 #
 default[:jmeter][:install_type] = 'source'
+default[:jmeter][:testplan_dir] = '/etc/jmeter/plans.d'
 
 default[:jmeter][:version] = '2.11'
 default[:jmeter][:source_url] = 'http://www.us.apache.org/dist/jmeter/binaries/apache-jmeter-2.11.tgz'
