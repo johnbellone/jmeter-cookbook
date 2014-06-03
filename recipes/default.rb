@@ -6,11 +6,24 @@
 # Cookbook Name:: jmeter
 # Recipe:: default
 #
-include_recipe 'java::default'
-include_recipe "jmeter::install_#{node[:jmeter][:install_type]}"
 
-directory node[:jmeter][:testplan_dir]
-jmeter_plan do
+include_recipe 'jmeter::install'
+
+include_recipe 'chef-sugar::default'
+compile_time do
+  chef_gem 'ruby-jmeter' do
+    version "~> #{node[:jmeter][:version]}"
+    action :nothing
+  end
+
+  ruby_block 'nuke Object.test' do
+    block do
+      class Object; undef test; end
+    end
+  end
+end
+
+jmeter_plan 'google-search' do
   threads count: 10 do
     visit name: 'Google Search', url: 'http://google.com'
   end

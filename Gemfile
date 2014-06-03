@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'berkshelf', '~> 3.1'
-gem 'rake'
+gem 'chef-sugar'
 gem 'ruby-jmeter'
+gem 'rake'
 
 group :integration, :test do
   gem 'test-kitchen'

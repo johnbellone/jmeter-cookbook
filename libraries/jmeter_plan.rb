@@ -14,6 +14,11 @@ class Chef
 
         @provider = Chef::Provider::JmeterBlock
         @resource_name = :jmeter_plan
+        @path = nil
+      end
+
+      def path(arg=nil)
+        set_or_return(:path, arg, kind_of: [ String ])
       end
     end
   end
