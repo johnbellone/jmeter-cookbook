@@ -11,8 +11,6 @@ include_recipe 'jmeter::install'
 
 include_recipe 'chef-sugar::default'
 compile_time do
-  chef_gem 'pry-remote'
-
   chef_gem 'ruby-jmeter' do
     version "~> #{node[:jmeter][:version]}"
   end
