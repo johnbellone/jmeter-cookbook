@@ -10,3 +10,8 @@ include_recipe 'java::default'
 include_recipe "jmeter::install_#{node[:jmeter][:install_type]}"
 
 directory node[:jmeter][:testplan_dir]
+jmeter_plan do
+  threads count: 10 do
+    visit name: 'Google Search', url: 'http://google.com'
+  end
+end
