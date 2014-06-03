@@ -10,4 +10,6 @@
 include_recipe 'java::default'
 include_recipe "jmeter::install_#{node[:jmeter][:install_type]}"
 
-directory node[:jmeter][:plan_dir]
+directory node[:jmeter][:plan_dir] do
+  recursive true
+end

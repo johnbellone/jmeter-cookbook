@@ -29,9 +29,9 @@ bundle install --binstubs
 bin/berks package
 ```
 
-## Configuration
+## Test Plan
 
-## Chef Solo
+### Chef Solo
 ```sh
 chef-solo -j attributes.json -r http://blp.s3.amazonaws.com/jmeter-cookbooks.tar.gz
 ```
