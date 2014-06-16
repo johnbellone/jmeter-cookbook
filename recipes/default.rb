@@ -6,10 +6,11 @@
 # Cookbook Name:: jmeter
 # Recipe:: default
 #
+
 include_recipe 'build-essential::default'
+include_recipe 'chef-sugar::default'
 include_recipe 'jmeter::install'
 
-include_recipe 'chef-sugar::default'
 compile_time do
   chef_gem 'ruby-jmeter' do
     version "~> #{node[:jmeter][:version]}"
