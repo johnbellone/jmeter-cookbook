@@ -11,5 +11,5 @@ include_recipe "jmeter::install_#{node[:jmeter][:install_type]}"
 
 directory node[:jmeter][:plan_dir] do
   recursive true
-  not_if { ::Dir.exist? node[:meter][:plan_dir] }
+  not_if { ::Dir.exists? node[:jmeter][:plan_dir] }
 end

@@ -15,6 +15,8 @@ end
 supports 'ubuntu', '= 12.04'
 supports 'ubuntu', '= 14.04'
 
+depends 'build-essential'
 depends 'ark'
 depends 'chef-sugar'
 depends 'java'
+ 

@@ -6,6 +6,8 @@
 # Cookbook Name:: jmeter
 # Recipe:: default
 #
+
+include_recipe 'build-essential::default'
 include_recipe 'chef-sugar::default'
 include_recipe 'jmeter::install'
 
