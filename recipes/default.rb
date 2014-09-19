@@ -6,10 +6,28 @@
 # Cookbook Name:: jmeter
 # Recipe:: default
 #
-
 include_recipe 'build-essential::default'
 include_recipe 'chef-sugar::default'
 include_recipe 'jmeter::install'
+
+directory node['jmeter']['plan_dir'] do
+  recursive true
+  not_if { ::Dir.exists? node['jmeter']['plan_dir'] }
+end
+
+package node['jmeter']['package_name'] do
+  version node['jmeter']['version']
+  only_if { node['jmeter']['install_type'] == 'package' }
+end
+
+ark 'jmeter' do
+  action :install
+  has_binaries ['bin/jmeter', 'bin/jmeter-server', 'bin/ApacheJMeter.jar']
+  url node['jmeter']['source_url']
+  checksum node['jmeter']['source_checksum']
+  version node['jmeter']['version']
+  only_if { node['jmeter']['install_type'] == 'source' }
+end
 
 compile_time do
   chef_gem 'ruby-jmeter' do
