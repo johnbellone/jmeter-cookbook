@@ -7,17 +7,23 @@
 # Library:: plan
 #
 class Chef
-  class Resource::JmeterPlan < Resource
+  class Resource::JmeterPlan < Resource::RubyBlock
     include Poise
-    actions(:create)
 
-    attribute(:path, String, default: nil)
+    def initialize(name, run_context=nil)
+      super
+      @resource_name = :jmeter_plan
+    end
+
+    actions(:run)
+
+    attribute(:path, kind_of: String, default: nil)
   end
 
-  class Provider::JmeterPlan < Provider
+  class Provider::JmeterPlan < Provider::RubyBlock
     include Poise
 
-    def action_create
+    def action_run
       converge_by("execute the jmeter test plan #{new_resource.name}") do
         rv = ::RubyJmeter.dsl_eval(::RubyJmeter::ExtendedDSL.new, &new_resource.block)
         Chef::Log.info("#{new_resource.name} called")
@@ -27,5 +33,7 @@ class Chef
         Chef::Log.info("#{new_resource.name}.jmx written to #{new_resource.path}")
       end
     end
+
+    alias_method :action_create, :action_run
   end
 end

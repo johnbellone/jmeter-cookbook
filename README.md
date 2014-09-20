@@ -1,5 +1,9 @@
 jmeter-cookbook
 ===============
+![Release](http://img.shields.io/github/release/johnbellone/jmeter-cookbook.svg)
+[![Build Status](http://img.shields.io/travis/johnbellone/jmeter-cookbook.svg)][14]
+[![Code Coverage](http://img.shields.io/coveralls/johnbellone/jmeter-cookbook.svg)][15]
+
 Configures a system load-testing with [Apache JMeter][3].
 
 # Requirements
@@ -108,3 +112,5 @@ chef-client -z -j attributes.json -r http://blp.s3.amazonaws.com/jmeter-cookbook
 [11]: https://github.com/socrata-cookbooks/java
 [12]: https://github.com/sethvargo-cookbooks/chef-sugar
 [13]: https://github.com/opscode-cookbooks/ark
+[14]: http://travis-ci.org/johnbellone/jmeter-cookbook
+[15]: https://coveralls.io/r/johnbellone/jmeter-cookbook

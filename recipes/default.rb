@@ -6,9 +6,11 @@
 # Cookbook Name:: jmeter
 # Recipe:: default
 #
-include_recipe 'build-essential::default'
 include_recipe 'chef-sugar::default'
-include_recipe 'jmeter::install'
+include_recipe 'java::default'
+
+node.set['build-essential']['compile_tile'] = true
+include_recipe 'build-essential::default'
 
 directory node['jmeter']['plan_dir'] do
   recursive true
@@ -31,7 +33,7 @@ end
 
 compile_time do
   chef_gem 'ruby-jmeter' do
-    version "~> #{node[:jmeter][:version]}"
+    version "~> #{node['jmeter']['version']}"
   end
 
   # HACK: Object#test is defined for RubyJmeter::ExtendedDSL.

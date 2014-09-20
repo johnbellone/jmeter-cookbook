@@ -1,11 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 3.1'
+gem 'berkshelf'
 gem 'chef-sugar'
 gem 'ruby-jmeter'
 gem 'rake'
 
 group :integration, :test do
+  gem 'foodcritic'
+  gem 'rubocop'
+  gem 'coveralls', require: false
+  gem 'rspec'
+  gem 'chefspec'
   gem 'test-kitchen'
   gem 'kitchen-vagrant'
   gem 'serverspec'
