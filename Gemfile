@@ -4,6 +4,7 @@ gem 'berkshelf'
 gem 'chef-sugar'
 gem 'ruby-jmeter'
 gem 'rake'
+gem 'stove'
 
 group :integration, :test do
   gem 'foodcritic'
