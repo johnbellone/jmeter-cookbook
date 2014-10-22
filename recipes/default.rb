@@ -42,9 +42,11 @@ compile_time do
 end
 
 jmeter_plan 'google-search' do
-  test do
-    threads count: 10 do
-      visit name: 'Google Search', url: 'http://google.com'
+  block do
+    test do
+      threads count: 10 do
+        visit name: 'Google Search', url: 'http://google.com'
+      end
     end
   end
 end

@@ -12,6 +12,7 @@ version          '0.2.0'
   supports name, '~> 5.8'
 end
 
+supports 'ubuntu', '= 10.04'
 supports 'ubuntu', '= 12.04'
 supports 'ubuntu', '= 14.04'
 

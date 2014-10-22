@@ -16,24 +16,22 @@ class Chef
     end
 
     actions(:run)
-
-    attribute(:path, kind_of: String, default: nil)
+    attribute(:path, kind_of: String, default: lazy { node['jmeter']['plan_dir'] })
   end
 
   class Provider::JmeterPlan < Provider::RubyBlock
     include Poise
 
     def action_run
+      Chef::Log.debug("#{new_resource.name} block is nil!") unless new_resource.block
+
       converge_by("execute the jmeter test plan #{new_resource.name}") do
         rv = ::RubyJmeter.dsl_eval(::RubyJmeter::ExtendedDSL.new, &new_resource.block)
         Chef::Log.info("#{new_resource.name} called")
 
-        new_resource.path ||= node['jmeter']['plan_dir']
         rv.jmx(file: ::File.join(new_resource.path, "#{new_resource.name}.jmx"))
         Chef::Log.info("#{new_resource.name}.jmx written to #{new_resource.path}")
       end
     end
-
-    alias_method :action_create, :action_run
   end
 end
