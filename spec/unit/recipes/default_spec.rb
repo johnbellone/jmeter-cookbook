@@ -6,7 +6,7 @@ describe_recipe 'jmeter::default' do
   it { expect(chef_run).to include_recipe('java::default') }
 
   it { expect(chef_run).to install_chef_gem('ruby-jmeter').with(version: '~> 2.11') }
-  it { expect(chef_run).to run_jmeter_plan('google-search').with(path: nil) }
+  it { expect(chef_run).to run_jmeter_plan('google-search').with(path: '/etc/jmeter/plans.d') }
 
   context 'with default attributes' do
     it do
