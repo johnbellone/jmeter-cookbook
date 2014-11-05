@@ -16,6 +16,7 @@ supports 'ubuntu', '= 10.04'
 supports 'ubuntu', '= 12.04'
 supports 'ubuntu', '= 14.04'
 
+depends 'apt'
 depends 'ark'
 depends 'build-essential'
 depends 'chef-sugar'

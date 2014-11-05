@@ -9,7 +9,10 @@
 include_recipe 'chef-sugar::default'
 include_recipe 'java::default'
 
-node.set['build-essential']['compile_tile'] = true
+node.set['apt']['compile_time_update'] = true
+node.set['build-essential']['compile_time'] = true
+
+include_recipe 'apt' if platform_family?('debian')
 include_recipe 'build-essential::default'
 
 directory node['jmeter']['plan_dir'] do
