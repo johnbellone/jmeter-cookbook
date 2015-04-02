@@ -14,7 +14,7 @@ class Chef::Resource::JmeterPlan < Chef::Resource::RubyBlock
   actions :run
   default_action :run
 
-  attribute :path, kind_of: String, default: lazy { node['jmeter']['plan_dir'] }
+  attribute :path, kind_of: String, default: lazy { ::File.dirname(node['jmeter']['plan_dir']) }
 end
 
 class Chef::Provider::JmeterPlan < Chef::Provider::JmeterPlan
