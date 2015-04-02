@@ -6,18 +6,11 @@
 # Cookbook Name:: jmeter
 # Recipe:: default
 #
-include_recipe 'chef-sugar::default'
 include_recipe 'java::default'
-
-node.set['apt']['compile_time_update'] = true
-node.set['build-essential']['compile_time'] = true
-
-include_recipe 'apt' if platform_family?('debian')
-include_recipe 'build-essential::default'
 
 directory node['jmeter']['plan_dir'] do
   recursive true
-  not_if { ::Dir.exists? node['jmeter']['plan_dir'] }
+  not_if { Dir.exists?(path) }
 end
 
 package node['jmeter']['package_name'] do
@@ -34,15 +27,13 @@ ark 'jmeter' do
   only_if { node['jmeter']['install_type'] == 'source' }
 end
 
-compile_time do
-  chef_gem 'ruby-jmeter' do
-    version "~> #{node['jmeter']['version']}"
-  end
+chef_gem 'ruby-jmeter' do
+  version node['jmeter']['gem_version']
+end.run_action(:install)
 
-  # HACK: Object#test is defined for RubyJmeter::ExtendedDSL.
-  require_chef_gem 'ruby-jmeter'
-  class Object; undef test; end
-end
+# HACK: Object#test is defined for RubyJmeter::ExtendedDSL.
+require 'ruby-jmeter'
+class Object; undef test; end
 
 jmeter_plan 'google-search' do
   block do

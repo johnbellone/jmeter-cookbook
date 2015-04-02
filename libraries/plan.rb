@@ -1,37 +1,34 @@
 #
 # Author:: John Bellone (<jbellone@bloomberg.net>)
-# Copyright:: Copyright (C) 2014 Bloomberg Finance L.P.
+# Copyright:: Copyright (C) 2014, 2015 Bloomberg Finance L.P.
 # License:: Apache 2.0
 #
 # Cookbook Name:: jmeter
 # Library:: plan
 #
-class Chef
-  class Resource::JmeterPlan < Resource::RubyBlock
-    include Poise
+require 'chef/resource/ruby_block'
+require 'chef/provider/ruby_block'
 
-    def initialize(name, run_context=nil)
-      super
-      @resource_name = :jmeter_plan
+class Chef::Resource::JmeterPlan < Chef::Resource::RubyBlock
+  self.resource_name = :jmeter_plan
+  actions :run
+  default_action :run
+
+  attribute :path, kind_of: String, default: lazy { node['jmeter']['plan_dir'] }
+end
+
+class Chef::Provider::JmeterPlan < Chef::Provider::JmeterPlan
+  use_inline_resources if defined?(use_inline_resources)
+  provides :jmeter_plan
+
+  action :run do
+    if new_resource.block.nil?
+      Chef::Log.debug("#{new_resource.name} jmeter_plan - block is not defined")
     end
 
-    actions(:run)
-    attribute(:path, kind_of: String, default: lazy { node['jmeter']['plan_dir'] })
-  end
-
-  class Provider::JmeterPlan < Provider::RubyBlock
-    include Poise
-
-    def action_run
-      Chef::Log.debug("#{new_resource.name} block is nil!") unless new_resource.block
-
-      converge_by("execute the jmeter test plan #{new_resource.name}") do
-        rv = ::RubyJmeter.dsl_eval(::RubyJmeter::ExtendedDSL.new, &new_resource.block)
-        Chef::Log.info("#{new_resource.name} called")
-
-        rv.jmx(file: ::File.join(new_resource.path, "#{new_resource.name}.jmx"))
-        Chef::Log.info("#{new_resource.name}.jmx written to #{new_resource.path}")
-      end
+    converge_by("#{new_resource.name} :run jmeter_plan") do
+      rv = ::RubyJmeter.dsl_eval(::RubyJmeter::ExtendedDSL.new, &new_resource.block)
+      rv.jmx(file: ::File.join(new_resource.path, "#{new_resource.name}.jmx"))
     end
   end
 end
