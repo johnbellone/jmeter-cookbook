@@ -23,7 +23,6 @@ using the node attributes in the Chef JSON file.
 
 The dependency cookbooks are:
 - [Ark cookbook][12]
-- [Chef Sugar cookbok][13]
 - [Java cookbook][11]
 
 ## Platforms
@@ -99,7 +98,6 @@ chef-client -z -j attributes.json -r http://blp.s3.amazonaws.com/jmeter-cookbook
 
 # Maintainers
 - Author:: [John Bellone][1] [@johnbellone][2] (<jbellone@bloomberg.net>)
-- Author:: Victor Rosero (<vrosero@bloomberg.net>)
 
 [1]: https://github.com/johnbellone
 [2]: https://twitter.com/johnbellone
