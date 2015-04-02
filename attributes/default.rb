@@ -9,8 +9,8 @@
 default['jmeter']['install_type'] = 'source'
 default['jmeter']['plan_dir'] = '/etc/jmeter/plans.d'
 
-default['jmeter']['version'] = '2.11'
-default['jmeter']['source_url'] = 'http://www.us.apache.org/dist/jmeter/binaries/apache-jmeter-2.11.tgz'
-default['jmeter']['source_checksum'] = '84a4edefea3a829aa54ac3dd17570b9ba8daa75d5438f6bc378b596c00d723bb'
+default['jmeter']['version'] = '2.13'
+default['jmeter']['source_url'] = 'http://www.us.apache.org/dist/jmeter/binaries/apache-jmeter-2.13.tgz'
+default['jmeter']['source_checksum'] = '9fe33d3d6e381103d3ced2962cdef5c164a06fc58c55e247eadf5a5dbcd4d8fe'
 
 default['jmeter']['package_name'] = 'jmeter'
