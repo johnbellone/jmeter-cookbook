@@ -8,6 +8,7 @@
 #
 require 'chef/resource/ruby_block'
 require 'chef/provider/ruby_block'
+require 'poise'
 
 class Chef::Resource::JmeterPlan < Chef::Resource::RubyBlock
   self.resource_name = :jmeter_plan
