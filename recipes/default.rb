@@ -1,10 +1,8 @@
 #
-# Author:: John Bellone (<jbellone@bloomberg.net>)
-# Copyright:: Copyright (C) 2014 Bloomberg Finance L.P.
-# License:: Apache 2.0
+# Cookbook: jmeter
+# License: Apache 2.0
 #
-# Cookbook Name:: jmeter
-# Recipe:: default
+# Copyright (C) 2014, 2015 Bloomberg Finance L.P.
 #
 include_recipe 'java::default'
 
@@ -27,9 +25,16 @@ ark 'jmeter' do
   only_if { node['jmeter']['install_type'] == 'source' }
 end
 
-chef_gem 'ruby-jmeter' do
-  version node['jmeter']['gem_version']
-end.run_action(:install)
+if Chef::Resource::ChefGem.instance_methods(false).include(:compile_time)
+  chef_gem 'ruby-jmeter' do
+    version node['jmeter']['gem_version']
+    compile_time true
+  end
+else
+  chef_gem 'ruby-jmeter' do
+    version node['jmeter']['gem_version']
+  end.run_action(:install)
+end
 
 # HACK: Object#test is defined for RubyJmeter::ExtendedDSL.
 require 'ruby-jmeter'
