@@ -1,2 +1,2 @@
+--default-path test/spec
 --color
---require spec_helper

@@ -2,14 +2,12 @@
 # Cookbook: jmeter
 # License: Apache 2.0
 #
-# Copyright (C) 2014, 2015 Bloomberg Finance L.P.
+# Copyright 2014-2015, Bloomberg Finance L.P.
 #
-include_recipe 'java::default'
 
-directory node['jmeter']['plan_dir'] do
-  recursive true
-  not_if { Dir.exists?(path) }
-end
+node.default['build-essential']['compile_time'] = true
+include_recipe 'build-essential::default'
+include_recipe 'java::default'
 
 package node['jmeter']['package_name'] do
   version node['jmeter']['version']
@@ -25,7 +23,7 @@ ark 'jmeter' do
   only_if { node['jmeter']['install_type'] == 'source' }
 end
 
-if Chef::Resource::ChefGem.instance_methods(false).include(:compile_time)
+if Chef::Resource::ChefGem.instance_methods(false).include?(:compile_time)
   chef_gem 'ruby-jmeter' do
     version node['jmeter']['gem_version']
     compile_time true
@@ -33,6 +31,7 @@ if Chef::Resource::ChefGem.instance_methods(false).include(:compile_time)
 else
   chef_gem 'ruby-jmeter' do
     version node['jmeter']['gem_version']
+    action :nothing
   end.run_action(:install)
 end
 

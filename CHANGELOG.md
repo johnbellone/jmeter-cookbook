@@ -1,7 +1,11 @@
-Changes
-=======
+# Change Log
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
 
-# Stable - 1.0.0
-1. Removes dependency on [chef-sugar][1], [apt][2] and [poise][3].
-2. Removes support for Ubuntu 10.04 and EL5.
-3. Cleans up test suite including removing brittle tests.
+## [Unreleased]
+
+## [1.0.0]
+### Features
+
+[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/johnbellone/rc-cookbook/compare/v1.0.0...HEAD

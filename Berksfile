@@ -1,3 +1,2 @@
-source 'https://supermarket.getchef.com'
-
+source 'https://supermarket.chef.io'
 metadata
