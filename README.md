@@ -69,10 +69,8 @@ inside of the default recipe we create a test plan against Google.
 ```ruby
 jmeter_plan 'google-search' do
   block do
-    test do
-      threads count: 10 do
-        visit name: 'Google Search', url: 'http://google.com'
-      end
+    threads count: 10 do
+      visit name: 'Google Search', url: 'http://google.com'
     end
   end
 end
