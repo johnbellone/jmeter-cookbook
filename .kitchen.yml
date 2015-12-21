@@ -14,5 +14,6 @@ platforms:
 suites:
   - name: default
     run_list:
+      - recipe[nokogiri::chefgem]
       - recipe[jmeter::default]
       - recipe[ruby-jmeter-plans::default]

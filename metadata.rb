@@ -16,4 +16,4 @@ depends 'ark'
 depends 'build-essential'
 depends 'java'
 depends 'poise', '~> 2.2'
-depends 'nokogiri', '~> 0.1'
+recommends 'nokogiri', '~> 0.1' if respond_to?(:recommends)

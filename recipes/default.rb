@@ -8,7 +8,6 @@
 node.default['build-essential']['compile_time'] = true
 include_recipe 'build-essential::default'
 include_recipe 'java::default'
-include_recipe 'nokogiri::chefgem'
 
 package node['jmeter']['package_name'] do
   version node['jmeter']['version']

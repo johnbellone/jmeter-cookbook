@@ -24,7 +24,7 @@ using the node attributes in the Chef JSON file.
 The dependency cookbooks are:
 - [Ark cookbook][12]
 - [Java cookbook][11]
-- [Nokogiri cookbook][16]
+- [Nokogiri cookbook][16] (optional)
 
 ## Platforms
 Since the dependencies for this really boil down to the ability to
