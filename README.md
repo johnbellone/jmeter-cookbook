@@ -24,6 +24,7 @@ using the node attributes in the Chef JSON file.
 The dependency cookbooks are:
 - [Ark cookbook][12]
 - [Java cookbook][11]
+- [Nokogiri cookbook][16]
 
 ## Platforms
 Since the dependencies for this really boil down to the ability to
@@ -114,3 +115,4 @@ chef-client -z -j attributes.json -r http://blp.s3.amazonaws.com/jmeter-cookbook
 [13]: https://github.com/opscode-cookbooks/ark
 [14]: http://travis-ci.org/johnbellone/jmeter-cookbook
 [15]: https://coveralls.io/r/johnbellone/jmeter-cookbook
+[16]: https://github.com/SearchSpring/chef_nokogiri

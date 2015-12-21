@@ -8,6 +8,7 @@
 node.default['build-essential']['compile_time'] = true
 include_recipe 'build-essential::default'
 include_recipe 'java::default'
+include_recipe 'nokogiri::chefgem'
 
 package node['jmeter']['package_name'] do
   version node['jmeter']['version']
@@ -33,18 +34,4 @@ else
     version node['jmeter']['gem_version']
     action :nothing
   end.run_action(:install)
-end
-
-# HACK: Object#test is defined for RubyJmeter::ExtendedDSL.
-require 'ruby-jmeter'
-class Object; undef test; end
-
-jmeter_plan 'google-search' do
-  block do
-    test do
-      threads count: 10 do
-        visit name: 'Google Search', url: 'http://google.com'
-      end
-    end
-  end
 end

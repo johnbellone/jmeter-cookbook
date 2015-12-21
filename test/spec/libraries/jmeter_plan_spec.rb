@@ -1,7 +1,8 @@
 require 'spec_helper'
-require_relative '../../../libraries/jmeter_plan'
+require_relative '../../../libraries/jmeter_plan_resource'
+require_relative '../../../libraries/jmeter_plan_provider'
 
-describe JmeterCookbook::Resource::JmeterPlan do
+describe Chef::Resource::JMeterPlan do
   step_into(:jmeter_plan)
   recipe 'jmeter::default'
   context 'with default properties' do

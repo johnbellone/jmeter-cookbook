@@ -12,3 +12,5 @@ default['jmeter']['source_url'] = 'http://www.us.apache.org/dist/jmeter/binaries
 default['jmeter']['source_checksum'] = '9fe33d3d6e381103d3ced2962cdef5c164a06fc58c55e247eadf5a5dbcd4d8fe'
 
 default['jmeter']['package_name'] = 'jmeter'
+
+default['nokogiri']['version'] = '1.6.7.1'
