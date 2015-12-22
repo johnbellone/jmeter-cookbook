@@ -24,6 +24,7 @@ using the node attributes in the Chef JSON file.
 The dependency cookbooks are:
 - [Ark cookbook][12]
 - [Java cookbook][11]
+- [Nokogiri cookbook][16] (optional)
 
 ## Platforms
 Since the dependencies for this really boil down to the ability to
@@ -68,10 +69,8 @@ inside of the default recipe we create a test plan against Google.
 ```ruby
 jmeter_plan 'google-search' do
   block do
-    test do
-      threads count: 10 do
-        visit name: 'Google Search', url: 'http://google.com'
-      end
+    threads count: 10 do
+      visit name: 'Google Search', url: 'http://google.com'
     end
   end
 end
@@ -114,3 +113,4 @@ chef-client -z -j attributes.json -r http://blp.s3.amazonaws.com/jmeter-cookbook
 [13]: https://github.com/opscode-cookbooks/ark
 [14]: http://travis-ci.org/johnbellone/jmeter-cookbook
 [15]: https://coveralls.io/r/johnbellone/jmeter-cookbook
+[16]: https://github.com/SearchSpring/chef_nokogiri

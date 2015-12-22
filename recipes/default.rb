@@ -34,17 +34,3 @@ else
     action :nothing
   end.run_action(:install)
 end
-
-# HACK: Object#test is defined for RubyJmeter::ExtendedDSL.
-require 'ruby-jmeter'
-class Object; undef test; end
-
-jmeter_plan 'google-search' do
-  block do
-    test do
-      threads count: 10 do
-        visit name: 'Google Search', url: 'http://google.com'
-      end
-    end
-  end
-end
